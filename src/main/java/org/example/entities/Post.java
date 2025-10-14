@@ -20,6 +20,7 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     @Column(nullable = false)
     private String title;
 
@@ -29,6 +30,8 @@ public class Post {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private PostStatus status;
+//    Stores the actual name of the enum constant as text ("DRAFT", "PUBLISHED").
+//    DB column will be a VARCHAR type.
 
     @Column(nullable = false)
     private int readingTime;
