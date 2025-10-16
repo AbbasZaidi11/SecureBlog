@@ -1,13 +1,15 @@
 package org.example.controllers;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.dtos.CategoryDto;
+import org.example.dtos.CreateCategoryRequest;
+import org.example.entities.Category;
 import org.example.services.CategoryService;
 import org.example.mappers.CategoryMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +28,16 @@ public class CategoryController {
                 .map(categoryMapper::toDto)   // no extra space
                 .toList();                    // Java 16+; otherwise use Collectors.toList()
         return ResponseEntity.ok(categories);
+    }
+
+    @PostMapping
+    public ResponseEntity<CategoryDto> createCategory(
+            @Valid @RequestBody CreateCategoryRequest createCategoryRequest){
+        Category categoryToCreate = categoryMapper.toEntity(createCategoryRequest);
+        Category savedCategory = categoryService.createCategory(categoryToCreate);
+        return new ResponseEntity<>(
+                categoryMapper.toDto(savedCategory),
+                HttpStatus.CREATED
+        );
     }
 }

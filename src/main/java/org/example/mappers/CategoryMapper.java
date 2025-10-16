@@ -1,6 +1,7 @@
 package org.example.mappers;
 
 import org.example.dtos.CategoryDto;
+import org.example.dtos.CreateCategoryRequest;
 import org.example.entities.Category;
 import org.example.entities.Post;
 import org.example.entities.PostStatus;
@@ -17,6 +18,8 @@ public interface CategoryMapper {
     // use the same name in qualifiedByName and @Named below:
     @Mapping(target = "postCount", source = "posts", qualifiedByName = "calculatePostCount")
     CategoryDto toDto(Category category);
+
+    Category toEntity(CreateCategoryRequest createCategoryRequest);
 
     @Named("calculatePostCount")
     default long calculatePostCount(List<Post> posts){
