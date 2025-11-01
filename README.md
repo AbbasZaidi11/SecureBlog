@@ -201,7 +201,7 @@ src/main/java/com/secureblog/
 ## Author
 
 **Your Name**  
-[GitHub](https://github.com/AbbasZaidi11) • [LinkedIn](https://linkedin.com/in/abbasrazazaidi731)
+[GitHub](https://github.com/AbbasZaidi11) • [LinkedIn](www.linkedin.com/in/abbaszaidi11)
 
 ---
 
