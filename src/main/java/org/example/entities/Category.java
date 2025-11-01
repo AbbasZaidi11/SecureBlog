@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
+
 @Entity
 @Table(name = "categories")
 @NoArgsConstructor
@@ -14,6 +15,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
+
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
